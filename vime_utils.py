@@ -81,8 +81,15 @@ def perf_metric (metric, y_test, y_test_hat):
     result = accuracy_score(np.argmax(y_test, axis = 1), 
                             np.argmax(y_test_hat, axis = 1))
   # AUROC metric
-  elif metric == 'auc':
-    result = roc_auc_score(y_test[:, 1], y_test_hat[:, 1])      
+  elif metric == 'auc' or metric == 'roc_auc':
+    result = roc_auc_score(y_test[:, 1], y_test_hat[:, 1])
+
+  # Added multiclass AUROC
+  elif metric == 'roc_auc_ovr':
+    result = roc_auc_score(y_test, y_test_hat, multi_class='ovr', average='macro')
+
+  else:
+    raise ValueError("Undefined metric.")
     
   return result
 

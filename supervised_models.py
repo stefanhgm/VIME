@@ -94,11 +94,12 @@ def mlp(x_train, y_train, x_test, parameters):
   # Convert labels into proper format
   if len(y_train.shape) == 1:
     y_train = convert_vector_to_matrix(y_train)
-    
+
+  # TODO: Changed to 0.75:0.25
   # Divide training and validation sets (9:1)
   idx = np.random.permutation(len(x_train[:, 0]))
-  train_idx = idx[:int(len(idx)*0.9)]
-  valid_idx = idx[int(len(idx)*0.9):]
+  train_idx = idx[:int(len(idx)*0.75)]
+  valid_idx = idx[int(len(idx)*0.75):]
   
   # Validation set
   x_valid = x_train[valid_idx, :]
