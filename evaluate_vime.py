@@ -62,7 +62,7 @@ def main():
     ts = datetime.datetime.now().strftime("-%Y%m%d-%H%M%S")
     metric = 'roc_auc'  # accuracy
     num_shots = [4, 8, 16]  # , 32]  # , 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 50000, 'all']  # ['all']
-    seeds = [42, 1024, 0, 1, 32]  # , 45, 655, 186, 126, 836]
+    seeds = [42, 1024, 0, 1, 32, 45, 655, 186, 126, 836]
     seeded_results = defaultdict(list)
     if metric == 'roc_auc' and args.dataset == 'car':
         # This computes the roc_auc_score for ovr on macro level:
